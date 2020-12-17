@@ -96,22 +96,22 @@ class KeyValueOperationsApi
      * @param  string $key Userkey for the record. (required)
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -120,7 +120,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function createRecordNamespaceKey($body, $key, $namespace, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function createRecordNamespaceKey($body, $key, $namespace, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         $this->createRecordNamespaceKeyWithHttpInfo($body, $key, $namespace, $authorization, $commit_level, $compress, $durable_delete, $expiration, $generation, $generation_policy, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $record_exists_action, $replica, $respond_all_ops, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout);
     }
@@ -135,22 +135,22 @@ class KeyValueOperationsApi
      * @param  string $key Userkey for the record. (required)
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -159,7 +159,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createRecordNamespaceKeyWithHttpInfo($body, $key, $namespace, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function createRecordNamespaceKeyWithHttpInfo($body, $key, $namespace, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         $returnType = '';
         $request = $this->createRecordNamespaceKeyRequest($body, $key, $namespace, $authorization, $commit_level, $compress, $durable_delete, $expiration, $generation, $generation_policy, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $record_exists_action, $replica, $respond_all_ops, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout);
@@ -251,22 +251,22 @@ class KeyValueOperationsApi
      * @param  string $key Userkey for the record. (required)
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -274,7 +274,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createRecordNamespaceKeyAsync($body, $key, $namespace, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function createRecordNamespaceKeyAsync($body, $key, $namespace, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         return $this->createRecordNamespaceKeyAsyncWithHttpInfo($body, $key, $namespace, $authorization, $commit_level, $compress, $durable_delete, $expiration, $generation, $generation_policy, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $record_exists_action, $replica, $respond_all_ops, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout)
             ->then(
@@ -294,22 +294,22 @@ class KeyValueOperationsApi
      * @param  string $key Userkey for the record. (required)
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -317,7 +317,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createRecordNamespaceKeyAsyncWithHttpInfo($body, $key, $namespace, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function createRecordNamespaceKeyAsyncWithHttpInfo($body, $key, $namespace, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         $returnType = '';
         $request = $this->createRecordNamespaceKeyRequest($body, $key, $namespace, $authorization, $commit_level, $compress, $durable_delete, $expiration, $generation, $generation_policy, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $record_exists_action, $replica, $respond_all_ops, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout);
@@ -353,22 +353,22 @@ class KeyValueOperationsApi
      * @param  string $key Userkey for the record. (required)
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -376,7 +376,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createRecordNamespaceKeyRequest($body, $key, $namespace, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    protected function createRecordNamespaceKeyRequest($body, $key, $namespace, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
@@ -583,22 +583,22 @@ class KeyValueOperationsApi
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $set Set for the record; equivalent to database table. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -607,7 +607,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function createRecordNamespaceSetKey($body, $key, $namespace, $set, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function createRecordNamespaceSetKey($body, $key, $namespace, $set, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         $this->createRecordNamespaceSetKeyWithHttpInfo($body, $key, $namespace, $set, $authorization, $commit_level, $compress, $durable_delete, $expiration, $generation, $generation_policy, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $record_exists_action, $replica, $respond_all_ops, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout);
     }
@@ -623,22 +623,22 @@ class KeyValueOperationsApi
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $set Set for the record; equivalent to database table. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -647,7 +647,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createRecordNamespaceSetKeyWithHttpInfo($body, $key, $namespace, $set, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function createRecordNamespaceSetKeyWithHttpInfo($body, $key, $namespace, $set, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         $returnType = '';
         $request = $this->createRecordNamespaceSetKeyRequest($body, $key, $namespace, $set, $authorization, $commit_level, $compress, $durable_delete, $expiration, $generation, $generation_policy, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $record_exists_action, $replica, $respond_all_ops, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout);
@@ -740,22 +740,22 @@ class KeyValueOperationsApi
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $set Set for the record; equivalent to database table. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -763,7 +763,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createRecordNamespaceSetKeyAsync($body, $key, $namespace, $set, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function createRecordNamespaceSetKeyAsync($body, $key, $namespace, $set, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         return $this->createRecordNamespaceSetKeyAsyncWithHttpInfo($body, $key, $namespace, $set, $authorization, $commit_level, $compress, $durable_delete, $expiration, $generation, $generation_policy, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $record_exists_action, $replica, $respond_all_ops, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout)
             ->then(
@@ -784,22 +784,22 @@ class KeyValueOperationsApi
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $set Set for the record; equivalent to database table. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -807,7 +807,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createRecordNamespaceSetKeyAsyncWithHttpInfo($body, $key, $namespace, $set, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function createRecordNamespaceSetKeyAsyncWithHttpInfo($body, $key, $namespace, $set, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         $returnType = '';
         $request = $this->createRecordNamespaceSetKeyRequest($body, $key, $namespace, $set, $authorization, $commit_level, $compress, $durable_delete, $expiration, $generation, $generation_policy, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $record_exists_action, $replica, $respond_all_ops, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout);
@@ -844,22 +844,22 @@ class KeyValueOperationsApi
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $set Set for the record; equivalent to database table. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -867,7 +867,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createRecordNamespaceSetKeyRequest($body, $key, $namespace, $set, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    protected function createRecordNamespaceSetKeyRequest($body, $key, $namespace, $set, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
@@ -1085,22 +1085,22 @@ class KeyValueOperationsApi
      * @param  string $key Userkey for the record. (required)
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -1109,7 +1109,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deleteRecordNamespaceKey($key, $namespace, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function deleteRecordNamespaceKey($key, $namespace, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         $this->deleteRecordNamespaceKeyWithHttpInfo($key, $namespace, $authorization, $commit_level, $compress, $durable_delete, $expiration, $generation, $generation_policy, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $record_exists_action, $replica, $respond_all_ops, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout);
     }
@@ -1122,22 +1122,22 @@ class KeyValueOperationsApi
      * @param  string $key Userkey for the record. (required)
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -1146,7 +1146,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteRecordNamespaceKeyWithHttpInfo($key, $namespace, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function deleteRecordNamespaceKeyWithHttpInfo($key, $namespace, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         $returnType = '';
         $request = $this->deleteRecordNamespaceKeyRequest($key, $namespace, $authorization, $commit_level, $compress, $durable_delete, $expiration, $generation, $generation_policy, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $record_exists_action, $replica, $respond_all_ops, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout);
@@ -1236,22 +1236,22 @@ class KeyValueOperationsApi
      * @param  string $key Userkey for the record. (required)
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -1259,7 +1259,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteRecordNamespaceKeyAsync($key, $namespace, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function deleteRecordNamespaceKeyAsync($key, $namespace, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         return $this->deleteRecordNamespaceKeyAsyncWithHttpInfo($key, $namespace, $authorization, $commit_level, $compress, $durable_delete, $expiration, $generation, $generation_policy, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $record_exists_action, $replica, $respond_all_ops, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout)
             ->then(
@@ -1277,22 +1277,22 @@ class KeyValueOperationsApi
      * @param  string $key Userkey for the record. (required)
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -1300,7 +1300,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteRecordNamespaceKeyAsyncWithHttpInfo($key, $namespace, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function deleteRecordNamespaceKeyAsyncWithHttpInfo($key, $namespace, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         $returnType = '';
         $request = $this->deleteRecordNamespaceKeyRequest($key, $namespace, $authorization, $commit_level, $compress, $durable_delete, $expiration, $generation, $generation_policy, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $record_exists_action, $replica, $respond_all_ops, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout);
@@ -1334,22 +1334,22 @@ class KeyValueOperationsApi
      * @param  string $key Userkey for the record. (required)
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -1357,7 +1357,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function deleteRecordNamespaceKeyRequest($key, $namespace, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    protected function deleteRecordNamespaceKeyRequest($key, $namespace, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         // verify the required parameter 'key' is set
         if ($key === null || (is_array($key) && count($key) === 0)) {
@@ -1553,22 +1553,22 @@ class KeyValueOperationsApi
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $set Set for the record; equivalent to database table. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -1577,7 +1577,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deleteRecordNamespaceSetKey($key, $namespace, $set, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function deleteRecordNamespaceSetKey($key, $namespace, $set, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         $this->deleteRecordNamespaceSetKeyWithHttpInfo($key, $namespace, $set, $authorization, $commit_level, $compress, $durable_delete, $expiration, $generation, $generation_policy, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $record_exists_action, $replica, $respond_all_ops, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout);
     }
@@ -1591,22 +1591,22 @@ class KeyValueOperationsApi
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $set Set for the record; equivalent to database table. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -1615,7 +1615,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteRecordNamespaceSetKeyWithHttpInfo($key, $namespace, $set, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function deleteRecordNamespaceSetKeyWithHttpInfo($key, $namespace, $set, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         $returnType = '';
         $request = $this->deleteRecordNamespaceSetKeyRequest($key, $namespace, $set, $authorization, $commit_level, $compress, $durable_delete, $expiration, $generation, $generation_policy, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $record_exists_action, $replica, $respond_all_ops, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout);
@@ -1706,22 +1706,22 @@ class KeyValueOperationsApi
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $set Set for the record; equivalent to database table. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -1729,7 +1729,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteRecordNamespaceSetKeyAsync($key, $namespace, $set, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function deleteRecordNamespaceSetKeyAsync($key, $namespace, $set, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         return $this->deleteRecordNamespaceSetKeyAsyncWithHttpInfo($key, $namespace, $set, $authorization, $commit_level, $compress, $durable_delete, $expiration, $generation, $generation_policy, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $record_exists_action, $replica, $respond_all_ops, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout)
             ->then(
@@ -1748,22 +1748,22 @@ class KeyValueOperationsApi
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $set Set for the record; equivalent to database table. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -1771,7 +1771,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteRecordNamespaceSetKeyAsyncWithHttpInfo($key, $namespace, $set, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function deleteRecordNamespaceSetKeyAsyncWithHttpInfo($key, $namespace, $set, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         $returnType = '';
         $request = $this->deleteRecordNamespaceSetKeyRequest($key, $namespace, $set, $authorization, $commit_level, $compress, $durable_delete, $expiration, $generation, $generation_policy, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $record_exists_action, $replica, $respond_all_ops, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout);
@@ -1806,22 +1806,22 @@ class KeyValueOperationsApi
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $set Set for the record; equivalent to database table. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -1829,7 +1829,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function deleteRecordNamespaceSetKeyRequest($key, $namespace, $set, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    protected function deleteRecordNamespaceSetKeyRequest($key, $namespace, $set, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         // verify the required parameter 'key' is set
         if ($key === null || (is_array($key) && count($key) === 0)) {
@@ -2038,15 +2038,15 @@ class KeyValueOperationsApi
      * @param  string $key Userkey for the record. (required)
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -2055,7 +2055,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\Record
      */
-    public function getRecordNamespaceKey($key, $namespace, $authorization = null, $compress = 'false', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $replica = 'SEQUENCE', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function getRecordNamespaceKey($key, $namespace, $authorization = null, $compress = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $replica = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         list($response) = $this->getRecordNamespaceKeyWithHttpInfo($key, $namespace, $authorization, $compress, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $replica, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout);
         return $response;
@@ -2069,15 +2069,15 @@ class KeyValueOperationsApi
      * @param  string $key Userkey for the record. (required)
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -2086,7 +2086,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\Record, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getRecordNamespaceKeyWithHttpInfo($key, $namespace, $authorization = null, $compress = 'false', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $replica = 'SEQUENCE', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function getRecordNamespaceKeyWithHttpInfo($key, $namespace, $authorization = null, $compress = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $replica = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         $returnType = '\Swagger\Client\Model\Record';
         $request = $this->getRecordNamespaceKeyRequest($key, $namespace, $authorization, $compress, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $replica, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout);
@@ -2190,15 +2190,15 @@ class KeyValueOperationsApi
      * @param  string $key Userkey for the record. (required)
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -2206,7 +2206,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getRecordNamespaceKeyAsync($key, $namespace, $authorization = null, $compress = 'false', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $replica = 'SEQUENCE', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function getRecordNamespaceKeyAsync($key, $namespace, $authorization = null, $compress = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $replica = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         return $this->getRecordNamespaceKeyAsyncWithHttpInfo($key, $namespace, $authorization, $compress, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $replica, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout)
             ->then(
@@ -2224,15 +2224,15 @@ class KeyValueOperationsApi
      * @param  string $key Userkey for the record. (required)
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -2240,7 +2240,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getRecordNamespaceKeyAsyncWithHttpInfo($key, $namespace, $authorization = null, $compress = 'false', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $replica = 'SEQUENCE', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function getRecordNamespaceKeyAsyncWithHttpInfo($key, $namespace, $authorization = null, $compress = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $replica = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         $returnType = '\Swagger\Client\Model\Record';
         $request = $this->getRecordNamespaceKeyRequest($key, $namespace, $authorization, $compress, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $replica, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout);
@@ -2288,15 +2288,15 @@ class KeyValueOperationsApi
      * @param  string $key Userkey for the record. (required)
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -2304,7 +2304,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getRecordNamespaceKeyRequest($key, $namespace, $authorization = null, $compress = 'false', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $replica = 'SEQUENCE', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    protected function getRecordNamespaceKeyRequest($key, $namespace, $authorization = null, $compress = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $replica = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         // verify the required parameter 'key' is set
         if ($key === null || (is_array($key) && count($key) === 0)) {
@@ -2472,15 +2472,15 @@ class KeyValueOperationsApi
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $set Set for the record; equivalent to database table. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -2489,7 +2489,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\Record
      */
-    public function getRecordNamespaceSetKey($key, $namespace, $set, $authorization = null, $compress = 'false', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $replica = 'SEQUENCE', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function getRecordNamespaceSetKey($key, $namespace, $set, $authorization = null, $compress = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $replica = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         list($response) = $this->getRecordNamespaceSetKeyWithHttpInfo($key, $namespace, $set, $authorization, $compress, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $replica, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout);
         return $response;
@@ -2504,15 +2504,15 @@ class KeyValueOperationsApi
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $set Set for the record; equivalent to database table. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -2521,7 +2521,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\Record, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getRecordNamespaceSetKeyWithHttpInfo($key, $namespace, $set, $authorization = null, $compress = 'false', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $replica = 'SEQUENCE', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function getRecordNamespaceSetKeyWithHttpInfo($key, $namespace, $set, $authorization = null, $compress = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $replica = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         $returnType = '\Swagger\Client\Model\Record';
         $request = $this->getRecordNamespaceSetKeyRequest($key, $namespace, $set, $authorization, $compress, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $replica, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout);
@@ -2626,15 +2626,15 @@ class KeyValueOperationsApi
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $set Set for the record; equivalent to database table. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -2642,7 +2642,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getRecordNamespaceSetKeyAsync($key, $namespace, $set, $authorization = null, $compress = 'false', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $replica = 'SEQUENCE', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function getRecordNamespaceSetKeyAsync($key, $namespace, $set, $authorization = null, $compress = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $replica = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         return $this->getRecordNamespaceSetKeyAsyncWithHttpInfo($key, $namespace, $set, $authorization, $compress, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $replica, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout)
             ->then(
@@ -2661,15 +2661,15 @@ class KeyValueOperationsApi
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $set Set for the record; equivalent to database table. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -2677,7 +2677,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getRecordNamespaceSetKeyAsyncWithHttpInfo($key, $namespace, $set, $authorization = null, $compress = 'false', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $replica = 'SEQUENCE', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function getRecordNamespaceSetKeyAsyncWithHttpInfo($key, $namespace, $set, $authorization = null, $compress = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $replica = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         $returnType = '\Swagger\Client\Model\Record';
         $request = $this->getRecordNamespaceSetKeyRequest($key, $namespace, $set, $authorization, $compress, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $replica, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout);
@@ -2726,15 +2726,15 @@ class KeyValueOperationsApi
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $set Set for the record; equivalent to database table. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -2742,7 +2742,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getRecordNamespaceSetKeyRequest($key, $namespace, $set, $authorization = null, $compress = 'false', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $replica = 'SEQUENCE', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    protected function getRecordNamespaceSetKeyRequest($key, $namespace, $set, $authorization = null, $compress = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $replica = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         // verify the required parameter 'key' is set
         if ($key === null || (is_array($key) && count($key) === 0)) {
@@ -2923,13 +2923,13 @@ class KeyValueOperationsApi
      * @param  string $key Userkey for the record. (required)
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $keytype The Type of the userKey. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function recordExistsNamespaceKey($key, $namespace, $authorization = null, $keytype = 'STRING')
+    public function recordExistsNamespaceKey($key, $namespace, $authorization = null, $keytype = null)
     {
         $this->recordExistsNamespaceKeyWithHttpInfo($key, $namespace, $authorization, $keytype);
     }
@@ -2942,13 +2942,13 @@ class KeyValueOperationsApi
      * @param  string $key Userkey for the record. (required)
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $keytype The Type of the userKey. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function recordExistsNamespaceKeyWithHttpInfo($key, $namespace, $authorization = null, $keytype = 'STRING')
+    public function recordExistsNamespaceKeyWithHttpInfo($key, $namespace, $authorization = null, $keytype = null)
     {
         $returnType = '';
         $request = $this->recordExistsNamespaceKeyRequest($key, $namespace, $authorization, $keytype);
@@ -3006,12 +3006,12 @@ class KeyValueOperationsApi
      * @param  string $key Userkey for the record. (required)
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $keytype The Type of the userKey. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function recordExistsNamespaceKeyAsync($key, $namespace, $authorization = null, $keytype = 'STRING')
+    public function recordExistsNamespaceKeyAsync($key, $namespace, $authorization = null, $keytype = null)
     {
         return $this->recordExistsNamespaceKeyAsyncWithHttpInfo($key, $namespace, $authorization, $keytype)
             ->then(
@@ -3029,12 +3029,12 @@ class KeyValueOperationsApi
      * @param  string $key Userkey for the record. (required)
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $keytype The Type of the userKey. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function recordExistsNamespaceKeyAsyncWithHttpInfo($key, $namespace, $authorization = null, $keytype = 'STRING')
+    public function recordExistsNamespaceKeyAsyncWithHttpInfo($key, $namespace, $authorization = null, $keytype = null)
     {
         $returnType = '';
         $request = $this->recordExistsNamespaceKeyRequest($key, $namespace, $authorization, $keytype);
@@ -3068,12 +3068,12 @@ class KeyValueOperationsApi
      * @param  string $key Userkey for the record. (required)
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $keytype The Type of the userKey. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function recordExistsNamespaceKeyRequest($key, $namespace, $authorization = null, $keytype = 'STRING')
+    protected function recordExistsNamespaceKeyRequest($key, $namespace, $authorization = null, $keytype = null)
     {
         // verify the required parameter 'key' is set
         if ($key === null || (is_array($key) && count($key) === 0)) {
@@ -3194,13 +3194,13 @@ class KeyValueOperationsApi
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $set Set for the record; equivalent to database table. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $keytype The Type of the userKey. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function recordExistsNamespaceSetKey($key, $namespace, $set, $authorization = null, $keytype = 'STRING')
+    public function recordExistsNamespaceSetKey($key, $namespace, $set, $authorization = null, $keytype = null)
     {
         $this->recordExistsNamespaceSetKeyWithHttpInfo($key, $namespace, $set, $authorization, $keytype);
     }
@@ -3214,13 +3214,13 @@ class KeyValueOperationsApi
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $set Set for the record; equivalent to database table. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $keytype The Type of the userKey. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function recordExistsNamespaceSetKeyWithHttpInfo($key, $namespace, $set, $authorization = null, $keytype = 'STRING')
+    public function recordExistsNamespaceSetKeyWithHttpInfo($key, $namespace, $set, $authorization = null, $keytype = null)
     {
         $returnType = '';
         $request = $this->recordExistsNamespaceSetKeyRequest($key, $namespace, $set, $authorization, $keytype);
@@ -3279,12 +3279,12 @@ class KeyValueOperationsApi
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $set Set for the record; equivalent to database table. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $keytype The Type of the userKey. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function recordExistsNamespaceSetKeyAsync($key, $namespace, $set, $authorization = null, $keytype = 'STRING')
+    public function recordExistsNamespaceSetKeyAsync($key, $namespace, $set, $authorization = null, $keytype = null)
     {
         return $this->recordExistsNamespaceSetKeyAsyncWithHttpInfo($key, $namespace, $set, $authorization, $keytype)
             ->then(
@@ -3303,12 +3303,12 @@ class KeyValueOperationsApi
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $set Set for the record; equivalent to database table. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $keytype The Type of the userKey. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function recordExistsNamespaceSetKeyAsyncWithHttpInfo($key, $namespace, $set, $authorization = null, $keytype = 'STRING')
+    public function recordExistsNamespaceSetKeyAsyncWithHttpInfo($key, $namespace, $set, $authorization = null, $keytype = null)
     {
         $returnType = '';
         $request = $this->recordExistsNamespaceSetKeyRequest($key, $namespace, $set, $authorization, $keytype);
@@ -3343,12 +3343,12 @@ class KeyValueOperationsApi
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $set Set for the record; equivalent to database table. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $keytype The Type of the userKey. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function recordExistsNamespaceSetKeyRequest($key, $namespace, $set, $authorization = null, $keytype = 'STRING')
+    protected function recordExistsNamespaceSetKeyRequest($key, $namespace, $set, $authorization = null, $keytype = null)
     {
         // verify the required parameter 'key' is set
         if ($key === null || (is_array($key) && count($key) === 0)) {
@@ -3484,22 +3484,22 @@ class KeyValueOperationsApi
      * @param  string $key Userkey for the record. (required)
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -3508,7 +3508,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function replaceRecordNamespaceKey($body, $key, $namespace, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function replaceRecordNamespaceKey($body, $key, $namespace, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         $this->replaceRecordNamespaceKeyWithHttpInfo($body, $key, $namespace, $authorization, $commit_level, $compress, $durable_delete, $expiration, $generation, $generation_policy, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $record_exists_action, $replica, $respond_all_ops, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout);
     }
@@ -3523,22 +3523,22 @@ class KeyValueOperationsApi
      * @param  string $key Userkey for the record. (required)
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -3547,7 +3547,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function replaceRecordNamespaceKeyWithHttpInfo($body, $key, $namespace, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function replaceRecordNamespaceKeyWithHttpInfo($body, $key, $namespace, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         $returnType = '';
         $request = $this->replaceRecordNamespaceKeyRequest($body, $key, $namespace, $authorization, $commit_level, $compress, $durable_delete, $expiration, $generation, $generation_policy, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $record_exists_action, $replica, $respond_all_ops, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout);
@@ -3639,22 +3639,22 @@ class KeyValueOperationsApi
      * @param  string $key Userkey for the record. (required)
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -3662,7 +3662,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function replaceRecordNamespaceKeyAsync($body, $key, $namespace, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function replaceRecordNamespaceKeyAsync($body, $key, $namespace, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         return $this->replaceRecordNamespaceKeyAsyncWithHttpInfo($body, $key, $namespace, $authorization, $commit_level, $compress, $durable_delete, $expiration, $generation, $generation_policy, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $record_exists_action, $replica, $respond_all_ops, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout)
             ->then(
@@ -3682,22 +3682,22 @@ class KeyValueOperationsApi
      * @param  string $key Userkey for the record. (required)
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -3705,7 +3705,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function replaceRecordNamespaceKeyAsyncWithHttpInfo($body, $key, $namespace, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function replaceRecordNamespaceKeyAsyncWithHttpInfo($body, $key, $namespace, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         $returnType = '';
         $request = $this->replaceRecordNamespaceKeyRequest($body, $key, $namespace, $authorization, $commit_level, $compress, $durable_delete, $expiration, $generation, $generation_policy, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $record_exists_action, $replica, $respond_all_ops, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout);
@@ -3741,22 +3741,22 @@ class KeyValueOperationsApi
      * @param  string $key Userkey for the record. (required)
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -3764,7 +3764,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function replaceRecordNamespaceKeyRequest($body, $key, $namespace, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    protected function replaceRecordNamespaceKeyRequest($body, $key, $namespace, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
@@ -3971,22 +3971,22 @@ class KeyValueOperationsApi
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $set Set for the record; equivalent to database table. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -3995,7 +3995,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function replaceRecordNamespaceSetKey($body, $key, $namespace, $set, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function replaceRecordNamespaceSetKey($body, $key, $namespace, $set, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         $this->replaceRecordNamespaceSetKeyWithHttpInfo($body, $key, $namespace, $set, $authorization, $commit_level, $compress, $durable_delete, $expiration, $generation, $generation_policy, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $record_exists_action, $replica, $respond_all_ops, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout);
     }
@@ -4011,22 +4011,22 @@ class KeyValueOperationsApi
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $set Set for the record; equivalent to database table. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -4035,7 +4035,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function replaceRecordNamespaceSetKeyWithHttpInfo($body, $key, $namespace, $set, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function replaceRecordNamespaceSetKeyWithHttpInfo($body, $key, $namespace, $set, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         $returnType = '';
         $request = $this->replaceRecordNamespaceSetKeyRequest($body, $key, $namespace, $set, $authorization, $commit_level, $compress, $durable_delete, $expiration, $generation, $generation_policy, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $record_exists_action, $replica, $respond_all_ops, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout);
@@ -4128,22 +4128,22 @@ class KeyValueOperationsApi
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $set Set for the record; equivalent to database table. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -4151,7 +4151,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function replaceRecordNamespaceSetKeyAsync($body, $key, $namespace, $set, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function replaceRecordNamespaceSetKeyAsync($body, $key, $namespace, $set, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         return $this->replaceRecordNamespaceSetKeyAsyncWithHttpInfo($body, $key, $namespace, $set, $authorization, $commit_level, $compress, $durable_delete, $expiration, $generation, $generation_policy, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $record_exists_action, $replica, $respond_all_ops, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout)
             ->then(
@@ -4172,22 +4172,22 @@ class KeyValueOperationsApi
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $set Set for the record; equivalent to database table. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -4195,7 +4195,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function replaceRecordNamespaceSetKeyAsyncWithHttpInfo($body, $key, $namespace, $set, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function replaceRecordNamespaceSetKeyAsyncWithHttpInfo($body, $key, $namespace, $set, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         $returnType = '';
         $request = $this->replaceRecordNamespaceSetKeyRequest($body, $key, $namespace, $set, $authorization, $commit_level, $compress, $durable_delete, $expiration, $generation, $generation_policy, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $record_exists_action, $replica, $respond_all_ops, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout);
@@ -4232,22 +4232,22 @@ class KeyValueOperationsApi
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $set Set for the record; equivalent to database table. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -4255,7 +4255,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function replaceRecordNamespaceSetKeyRequest($body, $key, $namespace, $set, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    protected function replaceRecordNamespaceSetKeyRequest($body, $key, $namespace, $set, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
@@ -4475,22 +4475,22 @@ class KeyValueOperationsApi
      * @param  string $key Userkey for the record. (required)
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -4499,7 +4499,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function updateRecordNamespaceKey($body, $key, $namespace, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function updateRecordNamespaceKey($body, $key, $namespace, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         $this->updateRecordNamespaceKeyWithHttpInfo($body, $key, $namespace, $authorization, $commit_level, $compress, $durable_delete, $expiration, $generation, $generation_policy, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $record_exists_action, $replica, $respond_all_ops, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout);
     }
@@ -4514,22 +4514,22 @@ class KeyValueOperationsApi
      * @param  string $key Userkey for the record. (required)
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -4538,7 +4538,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateRecordNamespaceKeyWithHttpInfo($body, $key, $namespace, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function updateRecordNamespaceKeyWithHttpInfo($body, $key, $namespace, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         $returnType = '';
         $request = $this->updateRecordNamespaceKeyRequest($body, $key, $namespace, $authorization, $commit_level, $compress, $durable_delete, $expiration, $generation, $generation_policy, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $record_exists_action, $replica, $respond_all_ops, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout);
@@ -4630,22 +4630,22 @@ class KeyValueOperationsApi
      * @param  string $key Userkey for the record. (required)
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -4653,7 +4653,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateRecordNamespaceKeyAsync($body, $key, $namespace, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function updateRecordNamespaceKeyAsync($body, $key, $namespace, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         return $this->updateRecordNamespaceKeyAsyncWithHttpInfo($body, $key, $namespace, $authorization, $commit_level, $compress, $durable_delete, $expiration, $generation, $generation_policy, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $record_exists_action, $replica, $respond_all_ops, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout)
             ->then(
@@ -4673,22 +4673,22 @@ class KeyValueOperationsApi
      * @param  string $key Userkey for the record. (required)
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -4696,7 +4696,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateRecordNamespaceKeyAsyncWithHttpInfo($body, $key, $namespace, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function updateRecordNamespaceKeyAsyncWithHttpInfo($body, $key, $namespace, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         $returnType = '';
         $request = $this->updateRecordNamespaceKeyRequest($body, $key, $namespace, $authorization, $commit_level, $compress, $durable_delete, $expiration, $generation, $generation_policy, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $record_exists_action, $replica, $respond_all_ops, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout);
@@ -4732,22 +4732,22 @@ class KeyValueOperationsApi
      * @param  string $key Userkey for the record. (required)
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -4755,7 +4755,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function updateRecordNamespaceKeyRequest($body, $key, $namespace, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    protected function updateRecordNamespaceKeyRequest($body, $key, $namespace, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
@@ -4962,22 +4962,22 @@ class KeyValueOperationsApi
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $set Set for the record; equivalent to database table. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -4986,7 +4986,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function updateRecordNamespaceSetKey($body, $key, $namespace, $set, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function updateRecordNamespaceSetKey($body, $key, $namespace, $set, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         $this->updateRecordNamespaceSetKeyWithHttpInfo($body, $key, $namespace, $set, $authorization, $commit_level, $compress, $durable_delete, $expiration, $generation, $generation_policy, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $record_exists_action, $replica, $respond_all_ops, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout);
     }
@@ -5002,22 +5002,22 @@ class KeyValueOperationsApi
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $set Set for the record; equivalent to database table. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -5026,7 +5026,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateRecordNamespaceSetKeyWithHttpInfo($body, $key, $namespace, $set, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function updateRecordNamespaceSetKeyWithHttpInfo($body, $key, $namespace, $set, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         $returnType = '';
         $request = $this->updateRecordNamespaceSetKeyRequest($body, $key, $namespace, $set, $authorization, $commit_level, $compress, $durable_delete, $expiration, $generation, $generation_policy, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $record_exists_action, $replica, $respond_all_ops, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout);
@@ -5119,22 +5119,22 @@ class KeyValueOperationsApi
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $set Set for the record; equivalent to database table. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -5142,7 +5142,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateRecordNamespaceSetKeyAsync($body, $key, $namespace, $set, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function updateRecordNamespaceSetKeyAsync($body, $key, $namespace, $set, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         return $this->updateRecordNamespaceSetKeyAsyncWithHttpInfo($body, $key, $namespace, $set, $authorization, $commit_level, $compress, $durable_delete, $expiration, $generation, $generation_policy, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $record_exists_action, $replica, $respond_all_ops, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout)
             ->then(
@@ -5163,22 +5163,22 @@ class KeyValueOperationsApi
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $set Set for the record; equivalent to database table. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -5186,7 +5186,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateRecordNamespaceSetKeyAsyncWithHttpInfo($body, $key, $namespace, $set, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function updateRecordNamespaceSetKeyAsyncWithHttpInfo($body, $key, $namespace, $set, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         $returnType = '';
         $request = $this->updateRecordNamespaceSetKeyRequest($body, $key, $namespace, $set, $authorization, $commit_level, $compress, $durable_delete, $expiration, $generation, $generation_policy, $keytype, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $record_exists_action, $replica, $respond_all_ops, $send_key, $sleep_between_retries, $socket_timeout, $total_timeout);
@@ -5223,22 +5223,22 @@ class KeyValueOperationsApi
      * @param  string $namespace Namespace for the record; equivalent to database name. (required)
      * @param  string $set Set for the record; equivalent to database table. (required)
      * @param  string $authorization Authorization (optional)
-     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional, default to COMMIT_ALL)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional, default to false)
+     * @param  string $commit_level Desired consistency guarantee when committing a transaction on the server. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  bool $durable_delete If the transaction results in a record deletion, leave a tombstone for the record. (optional)
      * @param  int $expiration Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. (optional)
      * @param  int $generation Expected generation. Generation is the number of times a record has been modified (including creation) on the server. (optional)
-     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional, default to NONE)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
+     * @param  string $generation_policy Qualify how to handle record writes based on record generation. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional, default to UPDATE)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional, default to false)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
+     * @param  string $record_exists_action How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. (optional)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $respond_all_ops For client operate(), return a result for every operation. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -5246,7 +5246,7 @@ class KeyValueOperationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function updateRecordNamespaceSetKeyRequest($body, $key, $namespace, $set, $authorization = null, $commit_level = 'COMMIT_ALL', $compress = 'false', $durable_delete = 'false', $expiration = null, $generation = null, $generation_policy = 'NONE', $keytype = 'STRING', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $record_exists_action = 'UPDATE', $replica = 'SEQUENCE', $respond_all_ops = 'false', $send_key = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    protected function updateRecordNamespaceSetKeyRequest($body, $key, $namespace, $set, $authorization = null, $commit_level = null, $compress = null, $durable_delete = null, $expiration = null, $generation = null, $generation_policy = null, $keytype = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $record_exists_action = null, $replica = null, $respond_all_ops = null, $send_key = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {

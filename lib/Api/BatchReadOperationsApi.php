@@ -93,18 +93,18 @@ class BatchReadOperationsApi
      *
      * @param  \Swagger\Client\Model\BatchReadRequest[] $body batchKeys (required)
      * @param  string $authorization Authorization (optional)
-     * @param  bool $allow_inline Allow batch to be processed immediately in the server&#x27;s receiving thread when the server deems it to be appropriate.  If false, the batch will always be processed in separate transaction threads.  This field is only relevant for the new batch index protocol. (optional, default to true)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
-     * @param  int $max_concurrent_threads Maximum number of concurrent synchronous batch request threads to server nodes at any point in time. If there are 16 node/namespace combinations requested and maxConcurrentThreads is 8, then batch requests will be made for 8 node/namespace combinations in parallel threads. When a request completes, a new request will be issued until all 16 requests are complete. (optional, default to 1)
+     * @param  bool $allow_inline Allow batch to be processed immediately in the server&#x27;s receiving thread when the server deems it to be appropriate.  If false, the batch will always be processed in separate transaction threads.  This field is only relevant for the new batch index protocol. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
+     * @param  int $max_concurrent_threads Maximum number of concurrent synchronous batch request threads to server nodes at any point in time. If there are 16 node/namespace combinations requested and maxConcurrentThreads is 8, then batch requests will be made for 8 node/namespace combinations in parallel threads. When a request completes, a new request will be issued until all 16 requests are complete. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
-     * @param  bool $send_set_name Send set name field to server for every key in the batch for batch index protocol. This is only necessary when authentication is enabled and security roles are defined on a per set basis. (optional, default to false)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
+     * @param  bool $send_set_name Send set name field to server for every key in the batch for batch index protocol. This is only necessary when authentication is enabled and security roles are defined on a per set basis. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -113,7 +113,7 @@ class BatchReadOperationsApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\BatchRead[]
      */
-    public function performBatchGet($body, $authorization = null, $allow_inline = 'true', $compress = 'false', $keytype = 'STRING', $max_concurrent_threads = '1', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $replica = 'SEQUENCE', $send_key = 'false', $send_set_name = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function performBatchGet($body, $authorization = null, $allow_inline = null, $compress = null, $keytype = null, $max_concurrent_threads = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $replica = null, $send_key = null, $send_set_name = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         list($response) = $this->performBatchGetWithHttpInfo($body, $authorization, $allow_inline, $compress, $keytype, $max_concurrent_threads, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $replica, $send_key, $send_set_name, $sleep_between_retries, $socket_timeout, $total_timeout);
         return $response;
@@ -126,18 +126,18 @@ class BatchReadOperationsApi
      *
      * @param  \Swagger\Client\Model\BatchReadRequest[] $body batchKeys (required)
      * @param  string $authorization Authorization (optional)
-     * @param  bool $allow_inline Allow batch to be processed immediately in the server&#x27;s receiving thread when the server deems it to be appropriate.  If false, the batch will always be processed in separate transaction threads.  This field is only relevant for the new batch index protocol. (optional, default to true)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
-     * @param  int $max_concurrent_threads Maximum number of concurrent synchronous batch request threads to server nodes at any point in time. If there are 16 node/namespace combinations requested and maxConcurrentThreads is 8, then batch requests will be made for 8 node/namespace combinations in parallel threads. When a request completes, a new request will be issued until all 16 requests are complete. (optional, default to 1)
+     * @param  bool $allow_inline Allow batch to be processed immediately in the server&#x27;s receiving thread when the server deems it to be appropriate.  If false, the batch will always be processed in separate transaction threads.  This field is only relevant for the new batch index protocol. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
+     * @param  int $max_concurrent_threads Maximum number of concurrent synchronous batch request threads to server nodes at any point in time. If there are 16 node/namespace combinations requested and maxConcurrentThreads is 8, then batch requests will be made for 8 node/namespace combinations in parallel threads. When a request completes, a new request will be issued until all 16 requests are complete. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
-     * @param  bool $send_set_name Send set name field to server for every key in the batch for batch index protocol. This is only necessary when authentication is enabled and security roles are defined on a per set basis. (optional, default to false)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
+     * @param  bool $send_set_name Send set name field to server for every key in the batch for batch index protocol. This is only necessary when authentication is enabled and security roles are defined on a per set basis. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -146,7 +146,7 @@ class BatchReadOperationsApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\BatchRead[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function performBatchGetWithHttpInfo($body, $authorization = null, $allow_inline = 'true', $compress = 'false', $keytype = 'STRING', $max_concurrent_threads = '1', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $replica = 'SEQUENCE', $send_key = 'false', $send_set_name = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function performBatchGetWithHttpInfo($body, $authorization = null, $allow_inline = null, $compress = null, $keytype = null, $max_concurrent_threads = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $replica = null, $send_key = null, $send_set_name = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         $returnType = '\Swagger\Client\Model\BatchRead[]';
         $request = $this->performBatchGetRequest($body, $authorization, $allow_inline, $compress, $keytype, $max_concurrent_threads, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $replica, $send_key, $send_set_name, $sleep_between_retries, $socket_timeout, $total_timeout);
@@ -249,18 +249,18 @@ class BatchReadOperationsApi
      *
      * @param  \Swagger\Client\Model\BatchReadRequest[] $body batchKeys (required)
      * @param  string $authorization Authorization (optional)
-     * @param  bool $allow_inline Allow batch to be processed immediately in the server&#x27;s receiving thread when the server deems it to be appropriate.  If false, the batch will always be processed in separate transaction threads.  This field is only relevant for the new batch index protocol. (optional, default to true)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
-     * @param  int $max_concurrent_threads Maximum number of concurrent synchronous batch request threads to server nodes at any point in time. If there are 16 node/namespace combinations requested and maxConcurrentThreads is 8, then batch requests will be made for 8 node/namespace combinations in parallel threads. When a request completes, a new request will be issued until all 16 requests are complete. (optional, default to 1)
+     * @param  bool $allow_inline Allow batch to be processed immediately in the server&#x27;s receiving thread when the server deems it to be appropriate.  If false, the batch will always be processed in separate transaction threads.  This field is only relevant for the new batch index protocol. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
+     * @param  int $max_concurrent_threads Maximum number of concurrent synchronous batch request threads to server nodes at any point in time. If there are 16 node/namespace combinations requested and maxConcurrentThreads is 8, then batch requests will be made for 8 node/namespace combinations in parallel threads. When a request completes, a new request will be issued until all 16 requests are complete. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
-     * @param  bool $send_set_name Send set name field to server for every key in the batch for batch index protocol. This is only necessary when authentication is enabled and security roles are defined on a per set basis. (optional, default to false)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
+     * @param  bool $send_set_name Send set name field to server for every key in the batch for batch index protocol. This is only necessary when authentication is enabled and security roles are defined on a per set basis. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -268,7 +268,7 @@ class BatchReadOperationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function performBatchGetAsync($body, $authorization = null, $allow_inline = 'true', $compress = 'false', $keytype = 'STRING', $max_concurrent_threads = '1', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $replica = 'SEQUENCE', $send_key = 'false', $send_set_name = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function performBatchGetAsync($body, $authorization = null, $allow_inline = null, $compress = null, $keytype = null, $max_concurrent_threads = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $replica = null, $send_key = null, $send_set_name = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         return $this->performBatchGetAsyncWithHttpInfo($body, $authorization, $allow_inline, $compress, $keytype, $max_concurrent_threads, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $replica, $send_key, $send_set_name, $sleep_between_retries, $socket_timeout, $total_timeout)
             ->then(
@@ -285,18 +285,18 @@ class BatchReadOperationsApi
      *
      * @param  \Swagger\Client\Model\BatchReadRequest[] $body batchKeys (required)
      * @param  string $authorization Authorization (optional)
-     * @param  bool $allow_inline Allow batch to be processed immediately in the server&#x27;s receiving thread when the server deems it to be appropriate.  If false, the batch will always be processed in separate transaction threads.  This field is only relevant for the new batch index protocol. (optional, default to true)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
-     * @param  int $max_concurrent_threads Maximum number of concurrent synchronous batch request threads to server nodes at any point in time. If there are 16 node/namespace combinations requested and maxConcurrentThreads is 8, then batch requests will be made for 8 node/namespace combinations in parallel threads. When a request completes, a new request will be issued until all 16 requests are complete. (optional, default to 1)
+     * @param  bool $allow_inline Allow batch to be processed immediately in the server&#x27;s receiving thread when the server deems it to be appropriate.  If false, the batch will always be processed in separate transaction threads.  This field is only relevant for the new batch index protocol. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
+     * @param  int $max_concurrent_threads Maximum number of concurrent synchronous batch request threads to server nodes at any point in time. If there are 16 node/namespace combinations requested and maxConcurrentThreads is 8, then batch requests will be made for 8 node/namespace combinations in parallel threads. When a request completes, a new request will be issued until all 16 requests are complete. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
-     * @param  bool $send_set_name Send set name field to server for every key in the batch for batch index protocol. This is only necessary when authentication is enabled and security roles are defined on a per set basis. (optional, default to false)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
+     * @param  bool $send_set_name Send set name field to server for every key in the batch for batch index protocol. This is only necessary when authentication is enabled and security roles are defined on a per set basis. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -304,7 +304,7 @@ class BatchReadOperationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function performBatchGetAsyncWithHttpInfo($body, $authorization = null, $allow_inline = 'true', $compress = 'false', $keytype = 'STRING', $max_concurrent_threads = '1', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $replica = 'SEQUENCE', $send_key = 'false', $send_set_name = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    public function performBatchGetAsyncWithHttpInfo($body, $authorization = null, $allow_inline = null, $compress = null, $keytype = null, $max_concurrent_threads = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $replica = null, $send_key = null, $send_set_name = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         $returnType = '\Swagger\Client\Model\BatchRead[]';
         $request = $this->performBatchGetRequest($body, $authorization, $allow_inline, $compress, $keytype, $max_concurrent_threads, $max_retries, $predexp, $read_mode_ap, $read_mode_sc, $record_bins, $replica, $send_key, $send_set_name, $sleep_between_retries, $socket_timeout, $total_timeout);
@@ -351,18 +351,18 @@ class BatchReadOperationsApi
      *
      * @param  \Swagger\Client\Model\BatchReadRequest[] $body batchKeys (required)
      * @param  string $authorization Authorization (optional)
-     * @param  bool $allow_inline Allow batch to be processed immediately in the server&#x27;s receiving thread when the server deems it to be appropriate.  If false, the batch will always be processed in separate transaction threads.  This field is only relevant for the new batch index protocol. (optional, default to true)
-     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional, default to false)
-     * @param  string $keytype The Type of the userKey. (optional, default to STRING)
-     * @param  int $max_concurrent_threads Maximum number of concurrent synchronous batch request threads to server nodes at any point in time. If there are 16 node/namespace combinations requested and maxConcurrentThreads is 8, then batch requests will be made for 8 node/namespace combinations in parallel threads. When a request completes, a new request will be issued until all 16 requests are complete. (optional, default to 1)
+     * @param  bool $allow_inline Allow batch to be processed immediately in the server&#x27;s receiving thread when the server deems it to be appropriate.  If false, the batch will always be processed in separate transaction threads.  This field is only relevant for the new batch index protocol. (optional)
+     * @param  bool $compress Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. (optional)
+     * @param  string $keytype The Type of the userKey. (optional)
+     * @param  int $max_concurrent_threads Maximum number of concurrent synchronous batch request threads to server nodes at any point in time. If there are 16 node/namespace combinations requested and maxConcurrentThreads is 8, then batch requests will be made for 8 node/namespace combinations in parallel threads. When a request completes, a new request will be issued until all 16 requests are complete. (optional)
      * @param  int $max_retries Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. (optional)
-     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional, default to null)
-     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional, default to ONE)
-     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional, default to SESSION)
+     * @param  string $predexp Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. (optional)
+     * @param  string $read_mode_ap Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. (optional)
+     * @param  string $read_mode_sc Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. (optional)
      * @param  string[] $record_bins Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. (optional)
-     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional, default to SEQUENCE)
-     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional, default to false)
-     * @param  bool $send_set_name Send set name field to server for every key in the batch for batch index protocol. This is only necessary when authentication is enabled and security roles are defined on a per set basis. (optional, default to false)
+     * @param  string $replica Replica algorithm used to determine the target node for a single record command. (optional)
+     * @param  bool $send_key Send user defined key in addition to hash digest on both reads and writes. (optional)
+     * @param  bool $send_set_name Send set name field to server for every key in the batch for batch index protocol. This is only necessary when authentication is enabled and security roles are defined on a per set basis. (optional)
      * @param  int $sleep_between_retries Milliseconds to sleep between retries. (optional)
      * @param  int $socket_timeout Socket idle timeout in milliseconds when processing a database command. (optional)
      * @param  int $total_timeout Total transaction timeout in milliseconds. (optional)
@@ -370,7 +370,7 @@ class BatchReadOperationsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function performBatchGetRequest($body, $authorization = null, $allow_inline = 'true', $compress = 'false', $keytype = 'STRING', $max_concurrent_threads = '1', $max_retries = null, $predexp = 'null', $read_mode_ap = 'ONE', $read_mode_sc = 'SESSION', $record_bins = null, $replica = 'SEQUENCE', $send_key = 'false', $send_set_name = 'false', $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
+    protected function performBatchGetRequest($body, $authorization = null, $allow_inline = null, $compress = null, $keytype = null, $max_concurrent_threads = null, $max_retries = null, $predexp = null, $read_mode_ap = null, $read_mode_sc = null, $record_bins = null, $replica = null, $send_key = null, $send_set_name = null, $sleep_between_retries = null, $socket_timeout = null, $total_timeout = null)
     {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
