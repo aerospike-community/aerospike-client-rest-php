@@ -29,7 +29,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '0f59e559e37b9c6edf26704062974959420bf4d6',
+    'reference' => '4a1d5f7d7c0ac95244e1b1c7a9896d71982bc7ea',
     'name' => 'aerospike-community/aerospike-client-rest-php',
   ),
   'versions' => 
@@ -41,7 +41,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '0f59e559e37b9c6edf26704062974959420bf4d6',
+      'reference' => '4a1d5f7d7c0ac95244e1b1c7a9896d71982bc7ea',
     ),
     'composer/semver' => 
     array (
