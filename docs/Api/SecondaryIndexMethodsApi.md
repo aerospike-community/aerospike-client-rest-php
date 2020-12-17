@@ -1,45 +1,51 @@
-# Swagger\Client\SecondaryIndexMethodsApi
+# OpenAPI\Client\SecondaryIndexMethodsApi
 
-All URIs are relative to *//localhost:8080/*
+All URIs are relative to http://localhost:8080.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createIndex**](SecondaryIndexMethodsApi.md#createindex) | **POST** /v1/index | Create a secondary index.
-[**dropIndex**](SecondaryIndexMethodsApi.md#dropindex) | **DELETE** /v1/index/{namespace}/{name} | Remove a secondary Index
-[**getIndexStats**](SecondaryIndexMethodsApi.md#getindexstats) | **GET** /v1/index/{namespace}/{name} | Get Information about a single secondary index.
-[**indexInformation**](SecondaryIndexMethodsApi.md#indexinformation) | **GET** /v1/index | Return information about multiple secondary indices.
+[**createIndex()**](SecondaryIndexMethodsApi.md#createIndex) | **POST** /v1/index | Create a secondary index.
+[**dropIndex()**](SecondaryIndexMethodsApi.md#dropIndex) | **DELETE** /v1/index/{namespace}/{name} | Remove a secondary Index
+[**getIndexStats()**](SecondaryIndexMethodsApi.md#getIndexStats) | **GET** /v1/index/{namespace}/{name} | Get Information about a single secondary index.
+[**indexInformation()**](SecondaryIndexMethodsApi.md#indexInformation) | **GET** /v1/index | Return information about multiple secondary indices.
 
-# **createIndex**
-> createIndex($body, $authorization)
+
+## `createIndex()`
+
+```php
+createIndex($index_model, $authorization)
+```
 
 Create a secondary index.
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$apiInstance = new Swagger\Client\Api\SecondaryIndexMethodsApi(
+
+
+$apiInstance = new OpenAPI\Client\Api\SecondaryIndexMethodsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$body = new \Swagger\Client\Model\RestClientIndex(); // \Swagger\Client\Model\RestClientIndex | indexModel
-$authorization = "authorization_example"; // string | Authorization
+$index_model = new \OpenAPI\Client\Model\RestClientIndex(); // \OpenAPI\Client\Model\RestClientIndex | indexModel
+$authorization = 'authorization_example'; // string | Authorization
 
 try {
-    $apiInstance->createIndex($body, $authorization);
+    $apiInstance->createIndex($index_model, $authorization);
 } catch (Exception $e) {
     echo 'Exception when calling SecondaryIndexMethodsApi->createIndex: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\RestClientIndex**](../Model/RestClientIndex.md)| indexModel |
+ **index_model** | [**\OpenAPI\Client\Model\RestClientIndex**](../Model/RestClientIndex.md)| indexModel |
  **authorization** | **string**| Authorization | [optional]
 
 ### Return type
@@ -52,36 +58,43 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: application/json, application/msgpack
- - **Accept**: application/json, application/msgpack
+- **Content-Type**: `application/json`, `application/msgpack`
+- **Accept**: `application/json`, `application/msgpack`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
-# **dropIndex**
-> dropIndex($name, $namespace, $authorization)
+## `dropIndex()`
+
+```php
+dropIndex($name, $namespace, $authorization)
+```
 
 Remove a secondary Index
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$apiInstance = new Swagger\Client\Api\SecondaryIndexMethodsApi(
+
+
+$apiInstance = new OpenAPI\Client\Api\SecondaryIndexMethodsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$name = "name_example"; // string | The name of the index
-$namespace = "namespace_example"; // string | The namespace containing the index
-$authorization = "authorization_example"; // string | Authorization
+$name = 'name_example'; // string | The name of the index
+$namespace = 'namespace_example'; // string | The namespace containing the index
+$authorization = 'authorization_example'; // string | Authorization
 
 try {
     $apiInstance->dropIndex($name, $namespace, $authorization);
 } catch (Exception $e) {
     echo 'Exception when calling SecondaryIndexMethodsApi->dropIndex: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
@@ -102,29 +115,37 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/msgpack
+- **Content-Type**: Not defined
+- **Accept**: `application/json`, `application/msgpack`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
-# **getIndexStats**
-> map[string,string] getIndexStats($name, $namespace, $authorization)
+## `getIndexStats()`
+
+```php
+getIndexStats($name, $namespace, $authorization): map[string,string]
+```
 
 Get Information about a single secondary index.
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$apiInstance = new Swagger\Client\Api\SecondaryIndexMethodsApi(
+
+
+$apiInstance = new OpenAPI\Client\Api\SecondaryIndexMethodsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$name = "name_example"; // string | The name of the index
-$namespace = "namespace_example"; // string | The namespace containing the index
-$authorization = "authorization_example"; // string | Authorization
+$name = 'name_example'; // string | The name of the index
+$namespace = 'namespace_example'; // string | The namespace containing the index
+$authorization = 'authorization_example'; // string | Authorization
 
 try {
     $result = $apiInstance->getIndexStats($name, $namespace, $authorization);
@@ -132,7 +153,6 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling SecondaryIndexMethodsApi->getIndexStats: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
@@ -153,28 +173,36 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/msgpack
+- **Content-Type**: Not defined
+- **Accept**: `application/json`, `application/msgpack`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
-# **indexInformation**
-> \Swagger\Client\Model\RestClientIndex[] indexInformation($authorization, $namespace)
+## `indexInformation()`
+
+```php
+indexInformation($authorization, $namespace): \OpenAPI\Client\Model\RestClientIndex[]
+```
 
 Return information about multiple secondary indices.
 
 ### Example
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$apiInstance = new Swagger\Client\Api\SecondaryIndexMethodsApi(
+
+
+$apiInstance = new OpenAPI\Client\Api\SecondaryIndexMethodsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$authorization = "authorization_example"; // string | Authorization
-$namespace = "namespace_example"; // string | If specified, the list of returned indices will only contain entries from this namespace.
+$authorization = 'authorization_example'; // string | Authorization
+$namespace = 'namespace_example'; // string | If specified, the list of returned indices will only contain entries from this namespace.
 
 try {
     $result = $apiInstance->indexInformation($authorization, $namespace);
@@ -182,7 +210,6 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling SecondaryIndexMethodsApi->indexInformation: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
@@ -194,7 +221,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\RestClientIndex[]**](../Model/RestClientIndex.md)
+[**\OpenAPI\Client\Model\RestClientIndex[]**](../Model/RestClientIndex.md)
 
 ### Authorization
 
@@ -202,8 +229,9 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json, application/msgpack
+- **Content-Type**: Not defined
+- **Accept**: `application/json`, `application/msgpack`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
