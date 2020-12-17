@@ -26,22 +26,22 @@ $apiInstance = new Swagger\Client\Api\ExecuteOperationsApi(
 $body = array(new \Swagger\Client\Model\Operation()); // \Swagger\Client\Model\Operation[] | An array of operation objects specifying the operations to perform on the record.
 $namespace = "namespace_example"; // string | Namespace for the record; equivalent to database name.
 $authorization = "authorization_example"; // string | Authorization
-$commit_level = "COMMIT_ALL"; // string | Desired consistency guarantee when committing a transaction on the server.
-$compress = false; // bool | Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes.
-$durable_delete = false; // bool | If the transaction results in a record deletion, leave a tombstone for the record.
+$commit_level = "commit_level_example"; // string | Desired consistency guarantee when committing a transaction on the server.
+$compress = true; // bool | Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes.
+$durable_delete = true; // bool | If the transaction results in a record deletion, leave a tombstone for the record.
 $expiration = 56; // int | Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server.
 $generation = 56; // int | Expected generation. Generation is the number of times a record has been modified (including creation) on the server.
-$generation_policy = "NONE"; // string | Qualify how to handle record writes based on record generation.
-$keytype = "STRING"; // string | The Type of the userKey.
+$generation_policy = "generation_policy_example"; // string | Qualify how to handle record writes based on record generation.
+$keytype = "keytype_example"; // string | The Type of the userKey.
 $max_retries = 56; // int | Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry.
-$predexp = "null"; // string | Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored.
-$read_mode_ap = "ONE"; // string | Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode.
-$read_mode_sc = "SESSION"; // string | Read policy for SC (strong consistency) namespaces. Determines SC read consistency options.
+$predexp = "predexp_example"; // string | Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored.
+$read_mode_ap = "read_mode_ap_example"; // string | Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode.
+$read_mode_sc = "read_mode_sc_example"; // string | Read policy for SC (strong consistency) namespaces. Determines SC read consistency options.
 $record_bins = array("record_bins_example"); // string[] | Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned.
-$record_exists_action = "UPDATE"; // string | How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods.
-$replica = "SEQUENCE"; // string | Replica algorithm used to determine the target node for a single record command.
-$respond_all_ops = false; // bool | For client operate(), return a result for every operation.
-$send_key = false; // bool | Send user defined key in addition to hash digest on both reads and writes.
+$record_exists_action = "record_exists_action_example"; // string | How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods.
+$replica = "replica_example"; // string | Replica algorithm used to determine the target node for a single record command.
+$respond_all_ops = true; // bool | For client operate(), return a result for every operation.
+$send_key = true; // bool | Send user defined key in addition to hash digest on both reads and writes.
 $sleep_between_retries = 56; // int | Milliseconds to sleep between retries.
 $socket_timeout = 56; // int | Socket idle timeout in milliseconds when processing a database command.
 $total_timeout = 56; // int | Total transaction timeout in milliseconds.
@@ -62,22 +62,22 @@ Name | Type | Description  | Notes
  **body** | [**\Swagger\Client\Model\Operation[]**](../Model/Operation.md)| An array of operation objects specifying the operations to perform on the record. |
  **namespace** | **string**| Namespace for the record; equivalent to database name. |
  **authorization** | **string**| Authorization | [optional]
- **commit_level** | **string**| Desired consistency guarantee when committing a transaction on the server. | [optional] [default to COMMIT_ALL]
- **compress** | **bool**| Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. | [optional] [default to false]
- **durable_delete** | **bool**| If the transaction results in a record deletion, leave a tombstone for the record. | [optional] [default to false]
+ **commit_level** | **string**| Desired consistency guarantee when committing a transaction on the server. | [optional]
+ **compress** | **bool**| Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. | [optional]
+ **durable_delete** | **bool**| If the transaction results in a record deletion, leave a tombstone for the record. | [optional]
  **expiration** | **int**| Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. | [optional]
  **generation** | **int**| Expected generation. Generation is the number of times a record has been modified (including creation) on the server. | [optional]
- **generation_policy** | **string**| Qualify how to handle record writes based on record generation. | [optional] [default to NONE]
- **keytype** | **string**| The Type of the userKey. | [optional] [default to STRING]
+ **generation_policy** | **string**| Qualify how to handle record writes based on record generation. | [optional]
+ **keytype** | **string**| The Type of the userKey. | [optional]
  **max_retries** | **int**| Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. | [optional]
- **predexp** | **string**| Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. | [optional] [default to null]
- **read_mode_ap** | **string**| Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. | [optional] [default to ONE]
- **read_mode_sc** | **string**| Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. | [optional] [default to SESSION]
+ **predexp** | **string**| Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. | [optional]
+ **read_mode_ap** | **string**| Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. | [optional]
+ **read_mode_sc** | **string**| Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. | [optional]
  **record_bins** | [**string[]**](../Model/string.md)| Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. | [optional]
- **record_exists_action** | **string**| How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. | [optional] [default to UPDATE]
- **replica** | **string**| Replica algorithm used to determine the target node for a single record command. | [optional] [default to SEQUENCE]
- **respond_all_ops** | **bool**| For client operate(), return a result for every operation. | [optional] [default to false]
- **send_key** | **bool**| Send user defined key in addition to hash digest on both reads and writes. | [optional] [default to false]
+ **record_exists_action** | **string**| How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. | [optional]
+ **replica** | **string**| Replica algorithm used to determine the target node for a single record command. | [optional]
+ **respond_all_ops** | **bool**| For client operate(), return a result for every operation. | [optional]
+ **send_key** | **bool**| Send user defined key in addition to hash digest on both reads and writes. | [optional]
  **sleep_between_retries** | **int**| Milliseconds to sleep between retries. | [optional]
  **socket_timeout** | **int**| Socket idle timeout in milliseconds when processing a database command. | [optional]
  **total_timeout** | **int**| Total transaction timeout in milliseconds. | [optional]
@@ -116,22 +116,22 @@ $body = array(new \Swagger\Client\Model\Operation()); // \Swagger\Client\Model\O
 $namespace = "namespace_example"; // string | Namespace for the record; equivalent to database name.
 $set = "set_example"; // string | Set for the record; equivalent to database table.
 $authorization = "authorization_example"; // string | Authorization
-$commit_level = "COMMIT_ALL"; // string | Desired consistency guarantee when committing a transaction on the server.
-$compress = false; // bool | Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes.
-$durable_delete = false; // bool | If the transaction results in a record deletion, leave a tombstone for the record.
+$commit_level = "commit_level_example"; // string | Desired consistency guarantee when committing a transaction on the server.
+$compress = true; // bool | Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes.
+$durable_delete = true; // bool | If the transaction results in a record deletion, leave a tombstone for the record.
 $expiration = 56; // int | Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server.
 $generation = 56; // int | Expected generation. Generation is the number of times a record has been modified (including creation) on the server.
-$generation_policy = "NONE"; // string | Qualify how to handle record writes based on record generation.
-$keytype = "STRING"; // string | The Type of the userKey.
+$generation_policy = "generation_policy_example"; // string | Qualify how to handle record writes based on record generation.
+$keytype = "keytype_example"; // string | The Type of the userKey.
 $max_retries = 56; // int | Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry.
-$predexp = "null"; // string | Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored.
-$read_mode_ap = "ONE"; // string | Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode.
-$read_mode_sc = "SESSION"; // string | Read policy for SC (strong consistency) namespaces. Determines SC read consistency options.
+$predexp = "predexp_example"; // string | Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored.
+$read_mode_ap = "read_mode_ap_example"; // string | Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode.
+$read_mode_sc = "read_mode_sc_example"; // string | Read policy for SC (strong consistency) namespaces. Determines SC read consistency options.
 $record_bins = array("record_bins_example"); // string[] | Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned.
-$record_exists_action = "UPDATE"; // string | How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods.
-$replica = "SEQUENCE"; // string | Replica algorithm used to determine the target node for a single record command.
-$respond_all_ops = false; // bool | For client operate(), return a result for every operation.
-$send_key = false; // bool | Send user defined key in addition to hash digest on both reads and writes.
+$record_exists_action = "record_exists_action_example"; // string | How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods.
+$replica = "replica_example"; // string | Replica algorithm used to determine the target node for a single record command.
+$respond_all_ops = true; // bool | For client operate(), return a result for every operation.
+$send_key = true; // bool | Send user defined key in addition to hash digest on both reads and writes.
 $sleep_between_retries = 56; // int | Milliseconds to sleep between retries.
 $socket_timeout = 56; // int | Socket idle timeout in milliseconds when processing a database command.
 $total_timeout = 56; // int | Total transaction timeout in milliseconds.
@@ -153,22 +153,22 @@ Name | Type | Description  | Notes
  **namespace** | **string**| Namespace for the record; equivalent to database name. |
  **set** | **string**| Set for the record; equivalent to database table. |
  **authorization** | **string**| Authorization | [optional]
- **commit_level** | **string**| Desired consistency guarantee when committing a transaction on the server. | [optional] [default to COMMIT_ALL]
- **compress** | **bool**| Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. | [optional] [default to false]
- **durable_delete** | **bool**| If the transaction results in a record deletion, leave a tombstone for the record. | [optional] [default to false]
+ **commit_level** | **string**| Desired consistency guarantee when committing a transaction on the server. | [optional]
+ **compress** | **bool**| Use zlib compression on command buffers sent to the server and responses received from the server when the buffer size is greater than 128 bytes. | [optional]
+ **durable_delete** | **bool**| If the transaction results in a record deletion, leave a tombstone for the record. | [optional]
  **expiration** | **int**| Record expiration. Also known as ttl (time to live). Seconds record will live before being removed by the server. | [optional]
  **generation** | **int**| Expected generation. Generation is the number of times a record has been modified (including creation) on the server. | [optional]
- **generation_policy** | **string**| Qualify how to handle record writes based on record generation. | [optional] [default to NONE]
- **keytype** | **string**| The Type of the userKey. | [optional] [default to STRING]
+ **generation_policy** | **string**| Qualify how to handle record writes based on record generation. | [optional]
+ **keytype** | **string**| The Type of the userKey. | [optional]
  **max_retries** | **int**| Maximum number of retries before aborting the current transaction. The initial attempt is not counted as a retry. | [optional]
- **predexp** | **string**| Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. | [optional] [default to null]
- **read_mode_ap** | **string**| Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. | [optional] [default to ONE]
- **read_mode_sc** | **string**| Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. | [optional] [default to SESSION]
+ **predexp** | **string**| Optional predicate expression filter in postfix notation. If the predicate expression exists and evaluates to false, the transaction is ignored. | [optional]
+ **read_mode_ap** | **string**| Read policy for AP (availability) namespaces. How duplicates should be consulted in a read operation. Only makes a difference during migrations and only applicable in AP mode. | [optional]
+ **read_mode_sc** | **string**| Read policy for SC (strong consistency) namespaces. Determines SC read consistency options. | [optional]
  **record_bins** | [**string[]**](../Model/string.md)| Optionally specify a set of bins to return when fetching a record. If omitted, all bins will be returned. | [optional]
- **record_exists_action** | **string**| How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. | [optional] [default to UPDATE]
- **replica** | **string**| Replica algorithm used to determine the target node for a single record command. | [optional] [default to SEQUENCE]
- **respond_all_ops** | **bool**| For client operate(), return a result for every operation. | [optional] [default to false]
- **send_key** | **bool**| Send user defined key in addition to hash digest on both reads and writes. | [optional] [default to false]
+ **record_exists_action** | **string**| How to handle the existence of the record. This is ignored for POST/PUT/UPDATE kvs methods. | [optional]
+ **replica** | **string**| Replica algorithm used to determine the target node for a single record command. | [optional]
+ **respond_all_ops** | **bool**| For client operate(), return a result for every operation. | [optional]
+ **send_key** | **bool**| Send user defined key in addition to hash digest on both reads and writes. | [optional]
  **sleep_between_retries** | **int**| Milliseconds to sleep between retries. | [optional]
  **socket_timeout** | **int**| Socket idle timeout in milliseconds when processing a database command. | [optional]
  **total_timeout** | **int**| Total transaction timeout in milliseconds. | [optional]

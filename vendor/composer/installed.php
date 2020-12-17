@@ -1,24 +1,24 @@
 <?php return array (
   'root' => 
   array (
-    'pretty_version' => '1.0.0+no-version-set',
-    'version' => '1.0.0.0',
+    'pretty_version' => 'dev-main',
+    'version' => 'dev-main',
     'aliases' => 
     array (
     ),
-    'reference' => NULL,
-    'name' => 'arrowplum/aerospike-client-rest-php',
+    'reference' => '051e68317d8efcb8a950ec02fc4d815aa5a1ac30',
+    'name' => 'aerospike-community/aerospike-client-rest-php',
   ),
   'versions' => 
   array (
-    'arrowplum/aerospike-client-rest-php' => 
+    'aerospike-community/aerospike-client-rest-php' => 
     array (
-      'pretty_version' => '1.0.0+no-version-set',
-      'version' => '1.0.0.0',
+      'pretty_version' => 'dev-main',
+      'version' => 'dev-main',
       'aliases' => 
       array (
       ),
-      'reference' => NULL,
+      'reference' => '051e68317d8efcb8a950ec02fc4d815aa5a1ac30',
     ),
     'composer/semver' => 
     array (
