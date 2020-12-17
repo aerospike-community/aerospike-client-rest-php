@@ -1,4 +1,4 @@
-name: PHP Composer
+name: build
 
 on:
   push:
@@ -28,6 +28,6 @@ jobs:
 
     - name: Install dependencies
       if: steps.composer-cache.outputs.cache-hit != 'true'
-      run: composer install -no-progress
+      run: composer install --no-progress
     - name: Run test suite
       run: composer run-script test
